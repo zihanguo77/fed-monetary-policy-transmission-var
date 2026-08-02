@@ -14,12 +14,12 @@ In my Alevel EPQ, I used VAR to model and predict the inflation rate and unemplo
 - Unemployment Rate
 
 ## Methodology
-Training
+### Training
 - Data selection
 - Stationarity test
 - VAR estimation
-Forecasting
-Results Interpretation
+### Forecasting
+#### Results Interpretation
 - Impulse Response Function
 - Fiscal policy
 - Trade policy uncertainty
