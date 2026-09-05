@@ -2,3 +2,37 @@
 gen month = ym(2018, 1) + _n - 1
 format month %tm
 tsset month
+
+# CPI -> inflation
+gen inflation = 100*(ln(CPI) - L.ln(CPI))
+
+# stationarity test
+dfuller federalfundsrate, lag(0)
+# differentiate due to the high p-value
+dfuller D.federalfundsrate
+
+dfuller inflation, lag(0)
+dfuller Unemploymentrate, lag(0)
+
+# lag length selection
+varsoc D.federalfundsrate Unemploymentrate inflation 
+
+# VAR model
+var D.federalfundsrate inflation Unemploymentrate, lags(1/3)
+# granger casuality test
+vargranger
+# model stability test
+varstable
+
+# forecasting inflation and Unemployment for the coming 6months
+tsappend, add(6)
+fcast compute, step(6)
+
+fcast graph f_inflation, observed
+fcast graph f_Unemploymentrate, observed
+
+# impulse response function
+irf set monetary_policy_irf, replace
+irf create ffrshock, step(6)
+irf graph oirf, impulse((D.federalfundsrate) response(inflation Unemploymentrate)
+
