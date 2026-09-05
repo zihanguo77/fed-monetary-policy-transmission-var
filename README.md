@@ -10,7 +10,7 @@ In my Alevel EPQ, I used VAR to model and predict the inflation rate and unemplo
 
 ## Endogenous Variables
 - Federal Funds Rate
-- Consumer Price Index (CPI)
+- Consumer Price Index (CPI) -> inflation
 - Unemployment Rate
 
 ## Methodology
