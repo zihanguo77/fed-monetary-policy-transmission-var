@@ -1,0 +1,4 @@
+# time series model setup
+gen month = ym(2018, 1) + _n - 1
+format month %tm
+tsset month
